@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dd6da1ol1gcmf"]
+
+[ext_resource type="Script" uid="uid://y1i6n7gldqis" path="res://scripts/player.gd" id="1_rkbax"]
+[ext_resource type="PackedScene" uid="uid://cc5aj3me3mntt" path="res://scenas/jack_blanca.tscn" id="2_g1dw6"]
+[ext_resource type="PackedScene" uid="uid://c1bd85yoqv5n4" path="res://scenas/bocha_roja.tscn" id="3_yw30f"]
+[ext_resource type="PackedScene" uid="uid://0ildhye4nx2m" path="res://Arte/Modelos3D/Silla de ruedas.blend" id="4_yw30f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_iwpo4"]
+size = Vector3(0.6013051, 0.68718475, 0.37859696)
+
+[node name="player" type="CharacterBody3D" unique_id=318522625]
+up_direction = Vector3(1, 0, 0)
+script = ExtResource("1_rkbax")
+jack_scene = ExtResource("2_g1dw6")
+bocha_roja_scene = ExtResource("3_yw30f")
+distancia_delante = 0.9
+altura_spawn = 1.0
+
+[node name="Silla de ruedas" parent="." unique_id=2119805655 instance=ExtResource("4_yw30f")]
+
+[node name="CamaraPivot" type="Node3D" parent="." unique_id=152960222]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.99999994, 0.8252879)
+
+[node name="Camera3D" type="Camera3D" parent="CamaraPivot" unique_id=1306867480]
+transform = Transform3D(-0.0027040606, 0.2568502, -0.9664476, 0.01143634, 0.9663959, 0.25680447, 0.9999311, -0.010358209, -0.0055506187, 2.732875, -0.009559691, -1.0209103)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=770374213]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 2.8034403, 0.67470205, -0.19284675)
+shape = SubResource("BoxShape3D_iwpo4")

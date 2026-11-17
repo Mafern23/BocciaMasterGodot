@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dj3m0620gjplq"]
+
+[ext_resource type="Script" uid="uid://bpuc77a0o44vk" path="res://scripts/nivel.gd" id="1_eqogm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_equjk"]
+load_path = "res://.godot/imported/LOGO .JPG-78739894f4147fcd355e84ce4139af81.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eqogm"]
+bg_color = Color(1, 1, 1, 0.47058824)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oynub"]
+bg_color = Color(0.9647059, 0.9647059, 0.9647059, 0.3882353)
+
+[node name="nivel" type="Control" unique_id=951229870]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eqogm")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=752703367]
+layout_mode = 0
+offset_top = -27.0
+offset_right = 1183.0
+offset_bottom = 658.0
+color = Color(0, 0, 0, 1)
+
+[node name="Logo" type="Sprite2D" parent="ColorRect" unique_id=1285382326]
+position = Vector2(878.50006, 330)
+scale = Vector2(0.55277777, 0.5703704)
+texture = SubResource("CompressedTexture2D_equjk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=987848437]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 82.0
+offset_right = 481.0
+offset_bottom = 552.0
+size_flags_horizontal = 4
+theme_override_constants/separation = 250
+
+[node name="nivel 1" type="Button" parent="VBoxContainer" unique_id=576417357]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.13725491, 0.28235295, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_eqogm")
+text = "nivel 1"
+
+[node name="juego libre" type="Button" parent="VBoxContainer" unique_id=1556510382]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.13725491, 0.28235295, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_oynub")
+text = "juego libre"
+
+[connection signal="pressed" from="VBoxContainer/nivel 1" to="." method="_on_nivel_1_pressed"]
+[connection signal="pressed" from="VBoxContainer/juego libre" to="." method="_on_juego_libre_pressed"]

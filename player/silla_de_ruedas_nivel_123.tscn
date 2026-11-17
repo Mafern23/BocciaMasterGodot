@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://du1u5oom5ddy2"]
+
+[ext_resource type="PackedScene" uid="uid://b2kkdwojhunp3" path="res://Arte/Modelos3D/Silla de ruedas nivel 1 y 2.blend" id="1_dmbj4"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_21g0g"]
+size = Vector3(1, 0.70007324, 0.4230957)
+
+[node name="silla de ruedas nivel 123" type="CharacterBody3D" unique_id=1879988521]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1761184988]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30755615, -0.005004883)
+shape = SubResource("BoxShape3D_21g0g")
+
+[node name="Silla de ruedas niveles" parent="." unique_id=1301146154 instance=ExtResource("1_dmbj4")]
+
+[node name="CamaraPivot" type="Node3D" parent="." unique_id=1988395908]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0.99999994, 0.8252879)
+
+[node name="Camera3D" type="Camera3D" parent="CamaraPivot" unique_id=2009137361]
+transform = Transform3D(1.7421591e-05, 0.048135, -0.9988409, -8.395624e-07, 0.9988409, 0.048134997, 1.0000001, 9.663381e-13, 1.744181e-05, 0.020809175, -0.39750367, -0.831146)

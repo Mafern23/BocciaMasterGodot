@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://c1rqdv2v6sibh"]
+
+[ext_resource type="Script" uid="uid://dxmb6vplnv1ky" path="res://scripts/player_ia.gd" id="1_t32s1"]
+[ext_resource type="PackedScene" uid="uid://bwhktuhv5d735" path="res://scenas/bocha_azul.tscn" id="2_7asvv"]
+[ext_resource type="PackedScene" uid="uid://beyg4idjykwvn" path="res://Arte/Modelos3D/Silla de ruedas IA.blend" id="2_vsuku"]
+[ext_resource type="PackedScene" uid="uid://cc5aj3me3mntt" path="res://scenas/jack_blanca.tscn" id="3_jc5ef"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7asvv"]
+size = Vector3(0.6013051, 0.68718475, 0.37859696)
+
+[node name="player IA" type="CharacterBody3D" unique_id=940632079]
+script = ExtResource("1_t32s1")
+bocha_scene = ExtResource("2_7asvv")
+jack_scene = ExtResource("3_jc5ef")
+fuerza_max = 2.0
+
+[node name="Silla de ruedas IA" parent="." unique_id=503856445 instance=ExtResource("2_vsuku")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1974510910]
+transform = Transform3D(1, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 2.8034403, 0.67470205, -0.19284675)
+shape = SubResource("BoxShape3D_7asvv")

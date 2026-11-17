@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://dj7f1wbb8w8un"]
+
+[ext_resource type="Script" uid="uid://xa5txultn38p" path="res://scripts/juego.gd" id="1_4rxjd"]
+[ext_resource type="PackedScene" uid="uid://blfer8edbteui" path="res://Arte/Modelos3D/col.blend" id="1_ctuuj"]
+[ext_resource type="PackedScene" uid="uid://dd6da1ol1gcmf" path="res://player/player.tscn" id="2_dkos2"]
+[ext_resource type="PackedScene" uid="uid://c1rqdv2v6sibh" path="res://player/player_ia.tscn" id="3_qm7a7"]
+[ext_resource type="PackedScene" uid="uid://cc5aj3me3mntt" path="res://scenas/jack_blanca.tscn" id="4_ctuuj"]
+[ext_resource type="PackedScene" uid="uid://c1bd85yoqv5n4" path="res://scenas/bocha_roja.tscn" id="6_2k7kk"]
+[ext_resource type="PackedScene" uid="uid://bwhktuhv5d735" path="res://scenas/bocha_azul.tscn" id="7_dmyxt"]
+[ext_resource type="Script" uid="uid://cx8b1ehc6i812" path="res://scripts/game.gd" id="8_2k7kk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qm7a7"]
+size = Vector3(16.624374, 0.37806702, 10.644026)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dmyxt"]
+friction = 0.2
+bounce = 0.5
+
+[node name="juego" type="Node3D" unique_id=1247601918]
+script = ExtResource("1_4rxjd")
+
+[node name="coliseo" type="Node" parent="." unique_id=197591797]
+
+[node name="col" parent="coliseo" unique_id=2066915423 instance=ExtResource("1_ctuuj")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="coliseo/col" unique_id=1392334365]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999999, 1.1649377, 0, 0.022614479)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="coliseo/col/StaticBody3D" unique_id=1223464729]
+shape = SubResource("BoxShape3D_qm7a7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52021147]
+
+[node name="player" parent="." unique_id=2035894391 instance=ExtResource("2_dkos2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6344485, -0.24078792, -0.34244323)
+slide_on_ceiling = false
+min_force = 0.0
+max_force = 11.0
+
+[node name="bocha roja" parent="." unique_id=16765962 instance=ExtResource("6_2k7kk")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.8159388, 0)
+visible = false
+
+[node name="jack blanca" parent="." unique_id=54179521 instance=ExtResource("4_ctuuj")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.8159388, 0)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_dmyxt")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=570006968]
+transform = Transform3D(0.027140867, -0.6475494, 0.76154006, 0.01962641, 0.76201904, 0.6472572, -0.99943894, -0.0026208234, 0.033390928, 7.2105083, 3.345063, 0.56117105)
+
+[node name="player IA" parent="." unique_id=940632079 instance=ExtResource("3_qm7a7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.545171, -0.24162042, 0.59111345)
+bocha_scene = ExtResource("7_dmyxt")
+
+[node name="GameManager" type="Node3D" parent="." unique_id=1450762630]
+script = ExtResource("8_2k7kk")

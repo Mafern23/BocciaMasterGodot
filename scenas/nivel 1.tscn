@@ -1,0 +1,244 @@
+[gd_scene format=3 uid="uid://b175fkfll1jxl"]
+
+[ext_resource type="PackedScene" uid="uid://b8l3gi0gbjvan" path="res://Arte/Modelos3D/niveles .blend" id="1_af7r8"]
+[ext_resource type="Script" uid="uid://c0ywsv7v2kngw" path="res://scripts/nivel_1.gd" id="1_xswgn"]
+[ext_resource type="PackedScene" uid="uid://du1u5oom5ddy2" path="res://player/silla_de_ruedas_nivel_123.tscn" id="2_70ugq"]
+[ext_resource type="Script" uid="uid://dpstvfypep3rf" path="res://scripts/label.gd" id="2_ep5a0"]
+[ext_resource type="PackedScene" uid="uid://cc5aj3me3mntt" path="res://scenas/jack_blanca.tscn" id="2_k2jtc"]
+[ext_resource type="Script" uid="uid://ddn531y3s58tt" path="res://scripts/zona_s.gd" id="4_ep5a0"]
+[ext_resource type="Script" uid="uid://w3dv6fa1ee6e" path="res://scripts/entrenamiento_salidas.gd" id="5_78hrn"]
+[ext_resource type="Script" uid="uid://byyshvov1lec8" path="res://scripts/limite_cancha.gd" id="8_k7a6d"]
+[ext_resource type="Script" uid="uid://y1i6n7gldqis" path="res://scripts/player.gd" id="8_yennc"]
+[ext_resource type="PackedScene" uid="uid://c1bd85yoqv5n4" path="res://scenas/bocha_roja.tscn" id="9_nvo0u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_78hrn"]
+size = Vector3(0.3102417, 0.21435547, 0.22047424)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nvo0u"]
+size = Vector3(16.381958, 0.27703857, 10.451996)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k7a6d"]
+size = Vector3(10.178892, 0.25905037, 5.894698)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nvo0u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2cu2w"]
+size = Vector3(0.03326416, 1.4052734, 16.305798)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1w6hf"]
+size = Vector3(0.001, 1, 10.483673)
+
+[node name="nivel 1" type="Node3D" unique_id=1478928897 node_paths=PackedStringArray("zonas", "tutoria_label", "zona_label", "spawn_jack")]
+script = ExtResource("1_xswgn")
+zonas = [NodePath("EntrenamientoSalidas/ZonasSalida/zonasalida1"), NodePath("EntrenamientoSalidas/ZonasSalida/zonasalida2"), NodePath("EntrenamientoSalidas/ZonasSalida/zonasalida3"), NodePath("EntrenamientoSalidas/ZonasSalida/zonasalida4"), NodePath("EntrenamientoSalidas/ZonasSalida/zonasalida5"), NodePath("EntrenamientoSalidas/ZonasSalida/zonasalida6"), NodePath("EntrenamientoSalidas/ZonasSalida/zonasalida7"), NodePath("EntrenamientoSalidas/ZonasSalida/zonasalida8"), NodePath("EntrenamientoSalidas/ZonasSalida/zonasalida9")]
+zona_objetivo_id = 9
+tutoria_label = NodePath("Control/tutorial_label")
+zona_label = NodePath("Control/zona_Label")
+spawn_jack = NodePath("SpawnJack")
+
+[node name="Control" type="Control" parent="." unique_id=1805128117]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="tutorial_label" type="RichTextLabel" parent="Control" unique_id=252038321]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 3.775
+anchor_top = -3.7530677
+anchor_right = 3.775
+anchor_bottom = -3.7530677
+offset_left = 23.0
+offset_top = 161.12271
+offset_right = 747.0
+offset_bottom = 230.12271
+theme_override_colors/default_color = Color(0.99016804, 0.61719006, 0.76463443, 1)
+theme_override_font_sizes/normal_font_size = 15
+fit_content = true
+horizontal_alignment = 1
+script = ExtResource("2_ep5a0")
+tiempo_visible = 8.0
+metadata/_edit_use_anchors_ = true
+
+[node name="zona_Label" type="Label" parent="Control" unique_id=1638019134]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 70
+
+[node name="EntrenamientoSalidas" type="Node3D" parent="." unique_id=1842979185 node_paths=PackedStringArray("zonas") groups=["entrenamiento"]]
+script = ExtResource("5_78hrn")
+zonas = [NodePath("ZonasSalida/zonasalida1"), NodePath("ZonasSalida/zonasalida2"), NodePath("ZonasSalida/zonasalida3"), NodePath("ZonasSalida/zonasalida4"), NodePath("ZonasSalida/zonasalida5"), NodePath("ZonasSalida/zonasalida6"), NodePath("ZonasSalida/zonasalida7"), NodePath("ZonasSalida/zonasalida8"), NodePath("ZonasSalida/zonasalida9")]
+
+[node name="ZonasSalida" type="Node3D" parent="EntrenamientoSalidas" unique_id=1670673141]
+
+[node name="zonasalida1" type="Area3D" parent="EntrenamientoSalidas/ZonasSalida" unique_id=827648874]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7692889, 0.5208155, -2.013003)
+script = ExtResource("4_ep5a0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida1" unique_id=1658370410]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17829978, -0.19944358, -0.07271218)
+shape = SubResource("BoxShape3D_78hrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida1" unique_id=1247504566]
+
+[node name="zonasalida2" type="Area3D" parent="EntrenamientoSalidas/ZonasSalida" unique_id=1105490258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6435552, 0.5208155, -0.033388257)
+script = ExtResource("4_ep5a0")
+zona_id = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida2" unique_id=741799206]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17829978, -0.19944358, -0.07271218)
+shape = SubResource("BoxShape3D_78hrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida2" unique_id=680261536]
+
+[node name="zonasalida3" type="Area3D" parent="EntrenamientoSalidas/ZonasSalida" unique_id=895547835]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7279023, 0.5208155, 1.993643)
+script = ExtResource("4_ep5a0")
+zona_id = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida3" unique_id=1608185471]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17829978, -0.19944358, -0.07271218)
+shape = SubResource("BoxShape3D_78hrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida3" unique_id=2139990224]
+
+[node name="zonasalida4" type="Area3D" parent="EntrenamientoSalidas/ZonasSalida" unique_id=2118430723]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8533703, 0.5208155, -2.013003)
+script = ExtResource("4_ep5a0")
+zona_id = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida4" unique_id=1255418241]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17829978, -0.19944358, -0.07271218)
+shape = SubResource("BoxShape3D_78hrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida4" unique_id=2015230161]
+
+[node name="zonasalida5" type="Area3D" parent="EntrenamientoSalidas/ZonasSalida" unique_id=377463200]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21348846, 0.5208155, -0.057096243)
+script = ExtResource("4_ep5a0")
+zona_id = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida5" unique_id=476671208]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17829978, -0.19944358, -0.07271218)
+shape = SubResource("BoxShape3D_78hrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida5" unique_id=1009260808]
+
+[node name="zonasalida6" type="Area3D" parent="EntrenamientoSalidas/ZonasSalida" unique_id=313066770]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6238791, 0.5208155, 2.262101)
+script = ExtResource("4_ep5a0")
+zona_id = 6
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida6" unique_id=754403138]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17829978, -0.19944358, -0.07271218)
+shape = SubResource("BoxShape3D_78hrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida6" unique_id=2121627464]
+
+[node name="zonasalida7" type="Area3D" parent="EntrenamientoSalidas/ZonasSalida" unique_id=812474428]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.1952877, 0.5208155, -2.013003)
+script = ExtResource("4_ep5a0")
+zona_id = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida7" unique_id=2107036309]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17829978, -0.19944358, -0.07271218)
+shape = SubResource("BoxShape3D_78hrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida7" unique_id=116113980]
+
+[node name="zonasalida8" type="Area3D" parent="EntrenamientoSalidas/ZonasSalida" unique_id=1390129892]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.992794, 0.5208155, -0.0386827)
+script = ExtResource("4_ep5a0")
+zona_id = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida8" unique_id=1961114787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17829978, -0.19944358, -0.07271218)
+shape = SubResource("BoxShape3D_78hrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida8" unique_id=743258731]
+
+[node name="zonasalida9" type="Area3D" parent="EntrenamientoSalidas/ZonasSalida" unique_id=484771226]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0940437, 0.5208155, 2.2140656)
+script = ExtResource("4_ep5a0")
+zona_id = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida9" unique_id=1359897435]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17829978, -0.19944358, -0.07271218)
+shape = SubResource("BoxShape3D_78hrn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="EntrenamientoSalidas/ZonasSalida/zonasalida9" unique_id=1368882382]
+
+[node name="Node" type="Node" parent="." unique_id=2067504899]
+
+[node name="niveles " parent="Node" unique_id=272513008 instance=ExtResource("1_af7r8")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/niveles " unique_id=1106827186]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/niveles /StaticBody3D" unique_id=1125363280]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1631761, 0.0014042854, -0.052383423)
+shape = SubResource("BoxShape3D_nvo0u")
+
+[node name="player nivel 1" parent="." unique_id=298361657 groups=["player"] instance=ExtResource("2_70ugq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1504235, 0.23317453, -0.5464346)
+script = ExtResource("8_yennc")
+jack_scene = ExtResource("2_k2jtc")
+bocha_roja_scene = ExtResource("9_nvo0u")
+min_force = 0.0
+max_force = 4.0
+charge_speed = 7.0
+distancia_delante = 1.0
+altura_spawn = 0.2
+usar_toggle_jack = true
+
+[node name="SpawnJack" type="Node3D" parent="." unique_id=1827518342]
+
+[node name="LimiteCancha" type="Area3D" parent="SpawnJack" unique_id=1514412774]
+script = ExtResource("8_k7a6d")
+modo_entrenamiento = true
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="SpawnJack/LimiteCancha" unique_id=334653860]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1579962, 0.08110216, -0.0074272156)
+shape = SubResource("BoxShape3D_k7a6d")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=654889191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34606266)
+physics_material_override = SubResource("PhysicsMaterial_nvo0u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=608081400]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2043898, 0.73444045, 5.6170244)
+shape = SubResource("BoxShape3D_2cu2w")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=528390624]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34606266)
+physics_material_override = SubResource("PhysicsMaterial_nvo0u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=842580011]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2043898, 0.643698, -4.8652515)
+shape = SubResource("BoxShape3D_2cu2w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=662130751]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1477110344]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.408857, 0.41968417, 0.06465149)
+shape = SubResource("BoxShape3D_1w6hf")
+
+[node name="pausa" type="CanvasLayer" parent="." unique_id=1053173767]
+
+[node name="Control" type="Control" parent="pausa" unique_id=1072261669]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="pausa/Control" unique_id=1999659785]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 1.0
+offset_right = 218.0
+offset_bottom = 125.0
+theme_override_font_sizes/font_size = 90
+horizontal_alignment = 1

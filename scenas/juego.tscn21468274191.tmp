@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dj7f1wbb8w8un"]
+
+[ext_resource type="PackedScene" uid="uid://dd6da1ol1gcmf" path="res://player/player.tscn" id="2_dkos2"]
+[ext_resource type="PackedScene" uid="uid://blfer8edbteui" path="res://Arte/Modelos3D/col.blend" id="2_qm7a7"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="col" parent="." instance=ExtResource("2_qm7a7")]
+
+[node name="player" parent="." instance=ExtResource("2_dkos2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.834216, -0.2805286, 0.50389564)
+launch_force = 20.0

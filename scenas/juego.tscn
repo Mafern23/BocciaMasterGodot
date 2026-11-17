@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://dj7f1wbb8w8un"]
+
+[ext_resource type="Script" uid="uid://xa5txultn38p" path="res://scripts/juego.gd" id="1_4rxjd"]
+[ext_resource type="PackedScene" uid="uid://blfer8edbteui" path="res://Arte/Modelos3D/col.blend" id="1_ctuuj"]
+[ext_resource type="PackedScene" uid="uid://dd6da1ol1gcmf" path="res://player/player.tscn" id="2_dkos2"]
+[ext_resource type="Script" uid="uid://cf7ry287iiwok" path="res://scripts/limite_cancha_libre.gd" id="3_2k7kk"]
+[ext_resource type="PackedScene" uid="uid://c1rqdv2v6sibh" path="res://player/player_ia.tscn" id="3_qm7a7"]
+[ext_resource type="PackedScene" uid="uid://cc5aj3me3mntt" path="res://scenas/jack_blanca.tscn" id="4_ctuuj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qm7a7"]
+size = Vector3(16.340996, 0.37806702, 10.644026)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dmyxt"]
+friction = 0.2
+bounce = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ntpio"]
+size = Vector3(12.308623, 0.37806702, 6.3258624)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2k7kk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m170g"]
+size = Vector3(0.03326416, 1.4052734, 16.305798)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dmyxt"]
+size = Vector3(0.001, 1, 10.483673)
+
+[node name="juego" type="Node3D" unique_id=1247601918 groups=["ia"]]
+script = ExtResource("1_4rxjd")
+
+[node name="coliseo" type="Node" parent="." unique_id=197591797]
+
+[node name="col" parent="coliseo" unique_id=2066915423 instance=ExtResource("1_ctuuj")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="coliseo/col" unique_id=1392334365]
+transform = Transform3D(0.9999997, 0, 0, 0, 0.9999997, 0, 0, 0, 0.9999999, 1.1649377, 0, 0.022614479)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="coliseo/col/StaticBody3D" unique_id=1223464729]
+transform = Transform3D(0.99997777, 0, 0, 0, 0.99997777, 0, 0, 0, 1, 0.14168704, 0, 0)
+shape = SubResource("BoxShape3D_qm7a7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=52021147]
+
+[node name="jack blanca" parent="." unique_id=54179521 instance=ExtResource("4_ctuuj")]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.8159388, 0)
+visible = false
+physics_material_override = SubResource("PhysicsMaterial_dmyxt")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=570006968]
+transform = Transform3D(0.027140867, -0.6475494, 0.76154006, 0.01962641, 0.76201904, 0.6472572, -0.99943894, -0.0026208234, 0.033390928, 7.2105083, 3.345063, 0.56117105)
+
+[node name="player IA" parent="." unique_id=940632079 groups=["ia"] instance=ExtResource("3_qm7a7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.545171, -0.24162042, 0.59111345)
+
+[node name="player" parent="." unique_id=318522625 groups=["player"] instance=ExtResource("2_dkos2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.527631, -0.24095011, -0.34164873)
+min_force = 0.0
+max_force = 1.0
+charge_speed = 6.0
+
+[node name="LimiteCancha" type="Area3D" parent="." unique_id=591742782 node_paths=PackedStringArray("jack")]
+script = ExtResource("3_2k7kk")
+jack = NodePath("../jack blanca")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="LimiteCancha" unique_id=1960677909]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.011136532, 0, 0.024690866)
+shape = SubResource("BoxShape3D_ntpio")
+disabled = true
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="." unique_id=250001913]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34606266)
+physics_material_override = SubResource("PhysicsMaterial_2k7kk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2" unique_id=1270493944]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2043898, 0.73444045, 5.6170244)
+shape = SubResource("BoxShape3D_m170g")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="." unique_id=1892825738]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.34606266)
+physics_material_override = SubResource("PhysicsMaterial_2k7kk")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3" unique_id=472929007]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 1.2043898, 0.643698, -4.8652515)
+shape = SubResource("BoxShape3D_m170g")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=896750018]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1208253332]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.408857, 0.41968417, 0.06465149)
+shape = SubResource("BoxShape3D_dmyxt")
+
+[node name="puntos" type="CanvasLayer" parent="." unique_id=1856422970]
+
+[node name="Control" type="Control" parent="puntos" unique_id=2022393125]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -2.0
+offset_right = 1154.0
+offset_bottom = 326.0
+
+[node name="Labelrojo" type="Label" parent="puntos/Control" unique_id=2035877117]
+layout_mode = 0
+offset_left = 44.0
+offset_top = 26.0
+offset_right = 84.0
+offset_bottom = 136.0
+theme_override_font_sizes/font_size = 40
+
+[node name="Labelazul" type="Label" parent="puntos/Control" unique_id=1862883438]
+layout_mode = 0
+offset_left = 893.0
+offset_top = 32.0
+offset_right = 933.0
+offset_bottom = 142.0
+theme_override_font_sizes/font_size = 40
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1555057835]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=245668739]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=423145671]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 523.0
+offset_top = 17.0
+offset_right = 563.0
+offset_bottom = 141.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 55
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="LimiteCancha" to="." method="_on_limite_cancha_body_entered"]
+[connection signal="body_entered" from="LimiteCancha" to="LimiteCancha" method="_on_body_entered"]

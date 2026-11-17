@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://b31yu6p0lv3b0"]
+
+[ext_resource type="Script" uid="uid://b0ec1kwm8mdp5" path="res://scripts/inicio.gd" id="1_equjk"]
+[ext_resource type="Script" uid="uid://b242kyxut46er" path="res://scripts/pantallac.gd" id="3_1g7rq"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_equjk"]
+load_path = "res://.godot/imported/LOGO .JPG-78739894f4147fcd355e84ce4139af81.ctex"
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1g7rq"]
+bg_color = Color(1, 1, 1, 0.47058824)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3s2bv"]
+bg_color = Color(0.9647059, 0.9647059, 0.9647059, 0.3882353)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_tvu7x"]
+color = Color(1, 1, 1, 1)
+thickness = 6
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_equjk"]
+color = Color(0.36800265, 0.39464843, 1, 1)
+thickness = 6
+
+[node name="inicio" type="Control" unique_id=1814759084]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_equjk")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1181034044]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Logo" type="Sprite2D" parent="ColorRect" unique_id=1930033727]
+position = Vector2(311.50003, 323)
+scale = Vector2(0.55277777, 0.5703704)
+texture = SubResource("CompressedTexture2D_equjk")
+
+[node name="control" type="VBoxContainer" parent="." unique_id=1152459723]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 622.0
+offset_top = 32.0
+offset_right = -10.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 120
+
+[node name="play" type="Button" parent="control" unique_id=703479153]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.13725491, 0.28235295, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_1g7rq")
+text = "jugar"
+
+[node name="opcions" type="Button" parent="control" unique_id=1550135760]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.13725491, 0.28235295, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_3s2bv")
+text = "ajustes"
+
+[node name="exit" type="Button" parent="control" unique_id=269829792]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0.13725491, 0.28235295, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_3s2bv")
+text = "salir"
+
+[node name="Panel" type="Panel" parent="." unique_id=1693528721]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -547.0
+offset_top = 7.0
+offset_right = 3.0
+offset_bottom = 636.0
+grow_horizontal = 0
+
+[node name="Label" type="Label" parent="Panel" unique_id=1097961949]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = -1.0
+offset_bottom = 26.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 54
+text = "ajustes "
+horizontal_alignment = 1
+
+[node name="vol" type="Label" parent="Panel/Label" unique_id=1503708155]
+layout_mode = 0
+offset_left = 203.0
+offset_top = 120.0
+offset_right = 351.0
+offset_bottom = 169.0
+theme_override_font_sizes/font_size = 35
+text = "volumen"
+
+[node name="volumen" type="HSlider" parent="Panel/Label" unique_id=730889757]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 161.0
+offset_right = 495.0
+offset_bottom = 225.0
+theme_override_constants/center_grabber = 0
+theme_override_styles/slider = SubResource("StyleBoxLine_tvu7x")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_equjk")
+min_value = -40.0
+max_value = 0.0
+
+[node name="pantallac" type="CheckButton" parent="Panel/Label" unique_id=1660741182]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 297.0
+offset_right = 450.0
+offset_bottom = 349.0
+theme_override_font_sizes/font_size = 31
+text = "Pantalla completa"
+script = ExtResource("3_1g7rq")
+
+[node name="volver" type="Button" parent="Panel/Label" unique_id=1699485141]
+layout_mode = 0
+offset_left = 108.0
+offset_top = 554.0
+offset_right = 441.0
+offset_bottom = 621.0
+theme_override_colors/font_color = Color(0, 0.13725491, 0.28235295, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_3s2bv")
+text = "volver"
+
+[connection signal="pressed" from="control/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="control/opcions" to="." method="_on_opcions_pressed"]
+[connection signal="pressed" from="control/exit" to="." method="_on_exit_pressed"]
+[connection signal="value_changed" from="Panel/Label/volumen" to="." method="_on_volumen_value_changed"]
+[connection signal="toggled" from="Panel/Label/pantallac" to="Panel/Label/pantallac" method="_on_toggled"]
+[connection signal="pressed" from="Panel/Label/volver" to="." method="_on_volver_pressed"]
